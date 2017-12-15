@@ -1,5 +1,6 @@
 
 library(boot)
+library(snow)
 
 cores=Sys.getenv("SLURM_CPUS_ON_NODE")
 print(cores)
@@ -22,7 +23,8 @@ volume_estimate <- function(data, indices){
  return(relationships)
 }
 
+cl=makeCluster(8)
 # bootstrap on tree data
-system.time(res<-boot(data=trees, statistic=volume_estimate, R=5000, parallel="multicore", ncpus=cores))
+system.time(res<-boot(data=trees, statistic=volume_estimate, R=50000, parallel="snow", ncpus=8, cl=cl))
 
 print(res)
