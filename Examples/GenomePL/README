@@ -1,0 +1,23 @@
+
+# generate fake reads from human genome
+bash mkreads.sh
+
+# create tasks
+python mktasks.py data output > tasks.sh
+
+# create dSQ batch script
+module load dSQ
+dSQ --jobfile tasks.sh > run.sh
+
+# submit job
+run.sh
+
+# That will fail with memory errors
+# do: (~40sec)
+dSQ --jobfile tasks.sh --mem=10g > run.sh
+run.sh
+
+# Pipe version 
+python mktasks.py data output_pipe > tasks_pipe.sh
+dSQ --jobfile tasks_pipe.sh --mem=10g > run_pipe.sh
+run_pipe.sh
