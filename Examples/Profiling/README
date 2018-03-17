@@ -30,11 +30,11 @@ python -m line_profiler good.py.lprof
 
 cProfile:
 
-python -m cProfile -o prof.out bad.py 
+python -m cProfile -o bad.prof bad.py 
 
 (in python)
 import pstats
-p=pstats.Stats('prof.out')
+p=pstats.Stats('bad.prof')
 p.sort_stats('time').print_stats()
 
 or (profiling and outputing directly)
