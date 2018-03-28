@@ -4,4 +4,4 @@
 
 module load REMORA
 
-remora ~/bin/stress -c 4 
+remora ~/bin/stress -t 60 -c 8 

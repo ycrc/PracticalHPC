@@ -2,7 +2,7 @@ library(boot)
 library(snow)
 library(Rmpi)
 
-tasks=as.integer(Sys.getenv("SLURM_NTASKS"))
+tasks=8 #as.integer(Sys.getenv("SLURM_NTASKS"))
 print(tasks)
 
 # tries 5 different regression models on data
@@ -28,6 +28,7 @@ cl=makeMPIcluster(tasks-1) # need to leave one for master
 system.time(res<-boot(data=trees, statistic=volume_estimate, R=50000, parallel="snow", cl=cl))
 
 stopCluster(cl)
+print(res)
 mpi.quit()
 
 print(res)

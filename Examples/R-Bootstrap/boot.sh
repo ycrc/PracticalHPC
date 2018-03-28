@@ -1,5 +1,6 @@
 #!/bin/bash
-#SBATCH --mem-per-cpu=12g
+#SBATCH --mem=40g
 
+module purge
 module load R
-R CMD BATCH boot.R
+/usr/bin/time -a R CMD BATCH boot.R
