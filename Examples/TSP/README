@@ -1,0 +1,18 @@
+
+Original code:
+https://github.com/chncyhn/simulated-annealing-tsp
+
+iters = log(stopT/startT)/log(alpha)
+defaults:
+stopT=1E-8
+startT=sqrt(N)
+alpha=.995
+
+three versions:
+seq.py: explicit loop over each try
+map.py: map the anneal function over an array of tries
+par.py: use multiprocessing to do the map in parallel on k workers
+
+To run:
+make sure X forwarding is enabled so the output graphs can be displayed
+python {seq,map,par}.py trials
