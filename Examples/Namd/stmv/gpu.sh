@@ -1,8 +1,10 @@
 #!/bin/bash
 
-#SBATCH -p scavenge,gpu -c 20 -t 24:00:00 --gres=gpu:4 --gres-flags=enforce-binding
+#SBATCH -p pi_cryoem -c 8 -t 24:00 --gres=gpu:4 --gres-flags=enforce-binding
 
-module load Apps/NAMD/2.11-multicore-CUDA
+module load NAMD/2.12-multicore-CUDA
+
+# When running CUDA NAMD always add +idlepoll to the command line. This is needed to poll the GPU for results rather than sleeping while idle.
 
 namd2 +idlepoll +ppn $SLURM_CPUS_ON_NODE stmv.namd 
 

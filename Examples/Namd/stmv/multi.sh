@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#SBATCH -c 28
+#SBATCH -c 20
+#SBATCH -t 3:00
 
-module load Apps/NAMD/2.11-multicore
+module load NAMD/2.12-multicore
 
 namd2 +ppn $SLURM_CPUS_ON_NODE stmv.namd 

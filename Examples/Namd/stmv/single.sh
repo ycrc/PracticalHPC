@@ -2,6 +2,6 @@
 
 #SBATCH -c 1 
 
-module load Apps/NAMD/2.11-multicore
+module load NAMD/2.12-multicore
 
-namd2 +ppn $SLURM_CPUS_ON_NODE stmv.namd 
+namd2 stmv.namd 

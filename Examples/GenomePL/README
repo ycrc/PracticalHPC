@@ -10,12 +10,12 @@ module load dSQ
 dSQ --jobfile tasks.sh > run.sh
 
 # submit job
-run.sh
+sbatch run.sh
 
 # That will fail with memory errors
 # do: (~40sec)
 dSQ --jobfile tasks.sh --mem=10g > run.sh
-run.sh
+sbatch run.sh
 
 # Pipe version 
 python mktasks.py data output_pipe > tasks_pipe.sh
