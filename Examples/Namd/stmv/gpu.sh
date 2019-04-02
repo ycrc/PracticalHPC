@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -p pi_cryoem -c 8 -t 24:00 --gres=gpu:4 --gres-flags=enforce-binding
+#SBATCH -p pi_cryoem,scavenge -c 8 -t 24:00 --gres=gpu:4 --gres-flags=enforce-binding
 
 module load NAMD/2.12-multicore-CUDA
 
