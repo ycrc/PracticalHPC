@@ -3,8 +3,7 @@
 #SBATCH --mail-type=all 
 #SBATCH -t 10:00
 
-module load BWA/0.7.15-foss-2016a
-#module load BWA
+module load BWA
 
 sleep 10 # just for demo; to allow time to ssh to allocated node
 
