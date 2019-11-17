@@ -34,7 +34,7 @@ class SimAnneal(object):
         self.fitness_list = [self.cur_fitness]
 
     def __repr__(self):
-	return "%d %f %f %d" % (self.id, self.best_fitness, self.T, self.iteration)
+        return "%d %f %f %d" % (self.id, self.best_fitness, self.T, self.iteration)
 
     def initial_solution_shuffle(self):
         """

@@ -1,9 +1,9 @@
 from anneal import SimAnneal
+from visualize_tsp import plotTSP
 import matplotlib.pyplot as plt
 import random, os, sys, time
 
 if __name__ == '__main__':
-    t0=time.time()
     ncities=100 
     ntrials=int(sys.argv[1])
     random.seed(0)
@@ -12,6 +12,9 @@ if __name__ == '__main__':
     best=None
     bestfit=1e20
 
+    plotTSP([range(ncities),], coords)
+
+    t0=time.time()
     for i in range(ntrials):
         print("trial %d" % i)
         t=SimAnneal(coords, stopping_iter = 500000, alpha=0.9995, id=i)
