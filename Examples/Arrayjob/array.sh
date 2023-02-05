@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --array=1-10 
-#SBATCH -t 3:00
-#SBATCH --mail-type=ALL 
+#SBATCH --array 1-10
+#SBATCH --mem=10g
 
-module load R
-Rscript arrscript.R ${SLURM_ARRAY_TASK_ID} > results_${SLURM_ARRAY_TASK_ID}.out
+job=$(printf %03d ${SLURM_ARRAY_TASK_ID})
+
+module load SAMtools BWA; bwa mem ../Data/BWAIndex/genome.fa ../Data/Reads/reads_${job}.fq > Results/out${job}sam && samtools sort -O bam -o Results/out${job}bam Results/out${job}.sam
